@@ -1,0 +1,13 @@
+
+<div class="container">
+    <div class="register-form">
+        <h1>Register</h1>
+
+        <input type="text" placeholder="Username" class="username" #username>
+        <input type="password" placeholder="password" class="password" #password>
+        <input type="password" placeholder="Confirm Password" class="password" #confirmPassword>
+
+        <button class="register" (click)="register()">Sign up</button>
+        <button (click)="navigateTo('login')">Already have an account? Login here</button>
+    </div>
+</div>
