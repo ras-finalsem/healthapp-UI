@@ -32,7 +32,7 @@ export class RegisterComponent implements OnInit {
       if(password === confirmPassword) {
         console.log("Register");
         this._registerService.registerUser(username, password).subscribe((data) => {
-          console.log({data});
+          alert(data['message'])
         })
       } else {
         console.log("Passwords don't match");

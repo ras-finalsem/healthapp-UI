@@ -9,6 +9,6 @@ export class RegisterService {
   constructor(private http: HttpClient) { }
 
   registerUser(username: String, password: String) {
-    return this.http.post('https://8c8cba94acaf.ngrok.io/register', {username, password})
+    return this.http.post('http://localhost:8080/register', {username, password})
   }
 }
