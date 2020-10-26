@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
               break;
           }
         } else {
-          alert("thos should not have happened");
+          alert("this should not have happened");
         }
       });
     } else {
