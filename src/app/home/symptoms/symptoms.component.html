@@ -1,0 +1,32 @@
+<h2>select your symptoms</h2>
+
+<mat-chip-list>
+    <mat-chip
+        *ngFor="let symptom of selectedSymptoms"
+        [removable]="true"
+        (removed)="removeSymptom(symptom)">
+        {{symptom}}
+        <mat-icon matChipRemove>cancel</mat-icon>
+    </mat-chip>
+</mat-chip-list>
+
+<mat-form-field class="example-full-width">
+    <input type="text"
+           placeholder="Pick one"
+           aria-label="Number"
+           matInput
+           [formControl]="myControl"
+           [matAutocomplete]="auto">
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let option of filteredOptions | async" [value]="option" (click)="selectSymptom($event)">
+        {{option}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+
+  <br>
+
+  <ng-container *ngIf="possibleDiagnosis && possibleDiagnosis.length > 0">
+      Congratulations.. you might be having one or many of the following problems:
+      <p *ngFor="let item of possibleDiagnosis">{{item}}</p>
+  </ng-container>

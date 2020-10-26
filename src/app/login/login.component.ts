@@ -17,7 +17,6 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {}
 
   navigateTo(path, username?) {
-    debugger;
     const url = path + (username ? `/${username}` : '');
     this.router.navigateByUrl(url);
   }
