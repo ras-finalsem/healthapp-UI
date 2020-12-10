@@ -8,6 +8,9 @@ import { MaterialModule } from 'src/app/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
+import { GoogleMapsModule } from '@angular/google-maps'
+
+
 @NgModule({
   declarations: [SymptomsComponent],
   imports: [
@@ -15,7 +18,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
-    MaterialModule
+    MaterialModule,
+    GoogleMapsModule
   ],
   exports: [SymptomsComponent],
   providers: [SymptomsService]
