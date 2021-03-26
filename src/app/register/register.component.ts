@@ -12,6 +12,7 @@ export class RegisterComponent implements OnInit {
   @ViewChild('username') username;
   @ViewChild('password') password;
   @ViewChild('confirmPassword') confirmPassword;
+  @ViewChild('userType') userType;
 
   constructor(private router: Router, private _registerService: RegisterService) { }
 
@@ -26,12 +27,13 @@ export class RegisterComponent implements OnInit {
     const username = this.username.nativeElement.value;
     const password = this.password.nativeElement.value;
     const confirmPassword = this.confirmPassword.nativeElement.value;
+    const userType = this.userType.nativeElement.value;
 
     if(username && password && confirmPassword) {
       console.log("all things exist");
       if(password === confirmPassword) {
         console.log("Register");
-        this._registerService.registerUser(username, password).subscribe((data) => {
+        this._registerService.registerUser(username, password, userType).subscribe((data) => {
           alert(data['message'])
         })
       } else {

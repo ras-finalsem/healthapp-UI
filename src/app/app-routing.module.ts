@@ -3,8 +3,10 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { HomeModule } from './home/home.module';
 import { LoginComponent } from './login/login.component';
+import { LoginModule } from './login/login.module';
 import { MaterialModule } from './material.module';
 import { RegisterComponent } from './register/register.component';
+import { RegisterModule } from './register/register.module';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -17,7 +19,8 @@ const routes: Routes = [
   imports: [
     RouterModule.forRoot(routes),
     HomeModule,
-    MaterialModule
+    LoginModule,
+    RegisterModule
   ],
   exports: [RouterModule]
 })

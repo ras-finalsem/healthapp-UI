@@ -3,18 +3,19 @@ import { CommonModule } from '@angular/common';
 import { LoginComponent } from './login.component';
 import { RouterModule } from '@angular/router';
 import { LoginService } from './login.service';
-import { MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatLabelModule } from '@angular/material/label';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from 'src/app/material.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [LoginComponent],
   imports: [
     CommonModule,
+    BrowserAnimationsModule,
     RouterModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatLabelModule
+    FormsModule,
+    ReactiveFormsModule,
+    MaterialModule,
   ],
   providers: [LoginService]
 })

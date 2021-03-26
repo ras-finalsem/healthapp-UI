@@ -1,13 +1,31 @@
+<div class="register">
+    <div class="container">
+        <div class="register-heading">Create a new Account</div>
 
-<div class="container">
-    <div class="register-form">
-        <h1>Register</h1>
+        <mat-form-field class="username">
+            <mat-label>Username</mat-label>
+            <input matInput type="text" #username>
+        </mat-form-field>
 
-        <input type="text" placeholder="Username" class="username" #username>
-        <input type="password" placeholder="password" class="password" #password>
-        <input type="password" placeholder="Confirm Password" class="password" #confirmPassword>
+        <mat-form-field class="password">
+            <mat-label>Password</mat-label>
+            <input matInput type="password" #password>
+        </mat-form-field>
 
-        <button class="register" (click)="register()">Sign up</button>
-        <button (click)="navigateTo('login')">Already have an account? Login here</button>
+        <mat-form-field class="password">
+            <mat-label>Confirm Password</mat-label>
+            <input matInput type="password" #confirmPassword>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>User type</mat-label>
+            <select matNativeControl required #userType>
+              <option value="Patient">Patient</option>
+              <option value="Doctor">Doctor</option>
+            </select>
+        </mat-form-field>
+
+        <button mat-stroked-button (click)="register()">Sign up</button>
+        <button mat-stroked-button class="login-button" (click)="navigateTo('login')">Already have an account? Login here</button>
     </div>
 </div>

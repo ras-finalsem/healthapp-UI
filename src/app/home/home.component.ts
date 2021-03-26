@@ -10,9 +10,12 @@ export class HomeComponent implements OnInit {
 
   constructor(private router: Router, private route: ActivatedRoute) { }
 
+  username: string;
+
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       console.log(params.get('username'));
+      this.username = params.get('username');
     });
   }
 

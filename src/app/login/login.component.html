@@ -1,15 +1,20 @@
 <div class="login">
     <div class="container">
-        <h1>LOGIN</h1>
-        <input type="text" name="" id="" placeholder="Username" #username>
-        <input type="Password" name="" id="" placeholder="Password" #password>
+        <div class="login-heading">Welcome to Health App</div>
+        <!-- <input type="text" name="" id="" placeholder="Username" #username>
+        <input type="Password" name="" id="" placeholder="Password" #password> -->
 
-        <mat-form-field class="example-full-width">
-            <mat-label>Favorite food</mat-label>
-            <input matInput placeholder="Ex. Pizza" value="Sushi">
+        <mat-form-field class="username">
+            <mat-label>Username</mat-label>
+            <input matInput type="text" #username>
         </mat-form-field>
 
-        <button (click)="login()">Login</button>
-        <button (click)="navigateTo('register')">Dont have an account ? Register Here</button>
+        <mat-form-field class="password">
+            <mat-label>Password</mat-label>
+            <input matInput type="password" #password>
+        </mat-form-field>
+
+        <button mat-stroked-button class="login-button" (click)="login()">Login</button>
+        <button mat-stroked-button class="register-button" (click)="navigateTo('register')">Don't have an account ? Click here to Register</button>
     </div>
 </div>
