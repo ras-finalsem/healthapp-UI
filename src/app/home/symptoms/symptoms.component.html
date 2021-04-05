@@ -1,4 +1,4 @@
-<h2>select your symptoms</h2>
+<!-- <h2>select your symptoms</h2>
 
 <mat-chip-list>
     <mat-chip
@@ -30,11 +30,59 @@
       Congratulations.. you might be having one or many of the following problems:
       <p *ngFor="let item of possibleDiagnosis">{{item}}</p>
   </ng-container>
-<!-- 
-  <input #search id="pac-input" type="text" placeholder="Enter a location">
-
-  <google-map></google-map> -->
   
 
 
-  <div class="map" id="map" class="match-parent"></div>
+  <div class="map" id="map" class="match-parent"></div> -->
+
+  <div class="main">
+    <div class="content">
+      <div class="header">
+        <h2>Welcome {{username}}</h2>
+      </div>
+      <div class="chips" *ngIf="selectedSymptoms.length">
+        <span>Selected symptoms: </span>
+        <mat-chip-list>
+          <mat-chip
+          *ngFor="let symptom of selectedSymptoms"
+          [removable]="true"
+          (removed)="removeSymptom(symptom)">
+          {{symptom}}
+          <mat-icon matChipRemove>cancel</mat-icon>
+        </mat-chip>
+      </mat-chip-list>
+    </div>
+
+    <mat-form-field class="example-full-width">
+        <input type="text"
+              placeholder="Pick one"
+              aria-label="Number"
+              matInput
+              placeholder="Select symptoms"
+              [formControl]="myControl"
+              [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let option of filteredOptions | async" [value]="option" (click)="selectSymptom($event)">
+            {{option}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+
+      <ng-container *ngIf="possibleDiagnosis && possibleDiagnosis.length > 0">
+        <div class="possible-diagnosis">
+          Possible diagnosis based on the selected symptoms: 
+          <ul>
+            <li *ngFor="let item of possibleDiagnosis">{{item}}</li>
+          </ul>
+        </div>
+
+
+        <button mat-button class="show-hospitals-btn" (click)="showHospitals()">Show nearby hospitals</button>
+        
+      </ng-container>
+
+      <div class="mapbox-map" *ngIf="showHosp">
+        <div class="map" id="map" class="match-parent"></div>
+      </div>
+    </div>
+  </div>

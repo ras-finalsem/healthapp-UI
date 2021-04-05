@@ -9,6 +9,6 @@ export class LoginService {
   constructor(private http: HttpClient) { }
 
   loginUser(username: String, password: String) {
-    return this.http.post('http://localhost:8080/login', {username, password})
+    return this.http.post('http://localhost:5100/login', {username, password})
   }
 }

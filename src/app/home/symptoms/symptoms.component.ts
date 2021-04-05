@@ -74,7 +74,7 @@ export class SymptomsComponent implements OnInit {
 
   @Input() username: string = "";
 
-
+  showHosp = false;
 
   constructor(private _symptomsService: SymptomsService, private ngZone: NgZone, private _MapBoxAPIService: MapBoxAPIService, public dialog: MatDialog) {}
 
@@ -89,9 +89,12 @@ export class SymptomsComponent implements OnInit {
           map(value => that._filter(value))
         );
     });
-    // intialize location services
+  }
+  
+  showHospitals() {
+    this.showHosp = true;
     this.getLocation()
-    console.log("usernem: ", this.username);
+    // intialize location services
   }
 
   getLocation() {
@@ -105,8 +108,10 @@ export class SymptomsComponent implements OnInit {
   }
 
   initializeMapBox(position) {
-    const latitude = position.coords.latitude;
-    const longitude = position.coords.longitude;
+    // const latitude = position.coords.latitude;
+    // const longitude = position.coords.longitude;
+    const latitude = 42.3086;
+    const longitude = -83.4821;
 
     const bbox = {
       latitude,

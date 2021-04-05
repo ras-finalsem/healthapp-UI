@@ -10,7 +10,7 @@ export class BookAppointmentService {
 
   bookAppointment(appointmentData) {
     console.log("appointmentData: ", appointmentData);
-    return this.http.post('http://localhost:8080/bookAppointment', {...appointmentData, status: "pending"}).subscribe(response => {
+    return this.http.post('http://localhost:5100/bookAppointment', {...appointmentData, status: "pending"}).subscribe(response => {
       console.log("bookAppoint response: ", response)
     });
   }
