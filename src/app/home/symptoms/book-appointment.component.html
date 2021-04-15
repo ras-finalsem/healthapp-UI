@@ -1,8 +1,8 @@
 <h1 mat-dialog-title>{{data.name}}</h1>
-<div mat-dialog-content>
+<div mat-dialog-content style="display: flex; flex-direction: column; margin: 0 auto;">
   <!-- <p>Book appointment</p>
   {{data.selectedSymptoms}} -->
-  <div class="book-appointment-form">
+  <div class="book-appointment-form" style="display: flex; flex-direction: column; max-width: 200px; margin: 20px auto;">
     <mat-form-field class="example-full-width">
       <label for="">Select Date: </label>
       <input type="date"
@@ -15,7 +15,7 @@
     <mat-form-field class="example-full-width">
       <label for="">Selected symptoms: </label>
       <input type="text"
-             placeholder="Select date"
+             placeholder="Selected symptoms"
              aria-label="Number"
              [value]="data.selectedSymptoms"
              matInput>
@@ -23,5 +23,5 @@
 
   </div>
 
-  <button (click)="bookAppointment()">Book Appointment</button>
+  <button mat-stroked-button (click)="bookAppointment()">Book Appointment</button>
 </div>

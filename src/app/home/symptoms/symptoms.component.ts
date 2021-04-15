@@ -36,6 +36,7 @@ import {
   BookAppointmentService
 } from '../services/bookAppointment.service';
 
+import {MatSnackBar} from '@angular/material/snack-bar';
 export interface DialogData {
   name: string;
   selectedSymptoms: Array < any > ;
@@ -192,7 +193,8 @@ export class SymptomsComponent implements OnInit {
               console.log(selectedHospital, that.selectedSymptoms);
 
               const dialogRef = that.dialog.open(DialogOverviewExampleDialog, {
-                width: '250px',
+                width: '20vw',
+                height: '40vh',
                 data: {
                   username: that.username,
                   name: selectedHospital.text,
@@ -236,6 +238,10 @@ export class SymptomsComponent implements OnInit {
     });
   }
 
+  
+    logout() {
+      window.location.href='login';
+    }
 }
 
 @Component({
@@ -245,7 +251,7 @@ export class SymptomsComponent implements OnInit {
 export class DialogOverviewExampleDialog {
   @ViewChild('appointmentDate') appointmentDate: ElementRef;
 
-  constructor(public dialogRef: MatDialogRef < DialogOverviewExampleDialog > , @Inject(MAT_DIALOG_DATA) public data: DialogData, private _bookAppointmentService: BookAppointmentService) {
+  constructor(private _snackBar: MatSnackBar, public dialogRef: MatDialogRef < DialogOverviewExampleDialog > , @Inject(MAT_DIALOG_DATA) public data: DialogData, private _bookAppointmentService: BookAppointmentService) {
 
   }
 
@@ -258,6 +264,13 @@ export class DialogOverviewExampleDialog {
       date: this.appointmentDate.nativeElement.value,
       ...this.data
     });
+    this.dialogRef.close();
+    this._snackBar.open("Appointment request sent !", "OK", {
+      duration: 5000,
+      horizontalPosition: "center",
+      verticalPosition: "top",
+    });
   }
+
 
 }

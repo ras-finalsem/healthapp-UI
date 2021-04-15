@@ -7,11 +7,17 @@ import { LoginModule } from './login/login.module';
 import { MaterialModule } from './material.module';
 import { RegisterComponent } from './register/register.component';
 import { RegisterModule } from './register/register.module';
+import { AdminComponent } from './admin/admin.component';
+import { DoctorComponent } from './doctor/doctor.component';
+
+
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   {path: 'login', component:  LoginComponent},
   {path: 'register', component:  RegisterComponent},
+  {path: 'admin', component:  AdminComponent},
+  {path: 'doctor', component:  DoctorComponent},
   {path: 'home/:username', component:  HomeComponent}
 ];
 
@@ -21,6 +27,8 @@ const routes: Routes = [
     HomeModule,
     LoginModule,
     RegisterModule
+    
+    
   ],
   exports: [RouterModule]
 })

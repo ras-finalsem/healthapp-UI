@@ -1,0 +1,7 @@
+{Name: "SolutionReviewedAgreed_c", Display Name: "Solution reviewed & agreed with customer?", Type: "Text", Column Name: "EXTN_ATTRIBUTE_CHAR026"}
+{Name: "HandoverToImplementer_c", Display Name: "Adoption Plan handover to implementer complete?", Type: "Text", Column Name: "EXTN_ATTRIBUTE_CHAR030"}
+{Name: "FinalBOMArchitecture_c", Display Name: "Final Solution Architecture and BOM completed?", Type: "Text", Column Name: "EXTN_ATTRIBUTE_CHAR028"}
+{Name: "AdoptionPlanAgreed_c", Display Name: "Customer agrees to Adoption Plan?", Type: "Text", Column Name: "EXTN_ATTRIBUTE_CHAR029"}
+{Name: "TechEngineerQualNotes_c", Display Name: "TechEngineerQualNotes", Type: "Text", Column Name: "EXTN_ATTRIBUTE_CHAR040"}
+{Name: "InitialBOM_c", Display Name: "Initial BOM identified?", Type: "Text", Column Name: "EXTN_ATTRIBUTE_CHAR027"}
+{Name: "FunctionalNeedsMet_c", Display Name: "Proposed solution meets functional needs?", Type: "Text", Column Name: "EXTN_ATTRIBUTE_CHAR025"}

@@ -1,6 +1,6 @@
 <div class="login">
-    <div class="container">
-        <div class="login-heading">Welcome to Health App</div>
+    <div class="containerss">
+        <div class="login-heading">Welcome to Health Monitor</div>
         <!-- <input type="text" name="" id="" placeholder="Username" #username>
         <input type="Password" name="" id="" placeholder="Password" #password> -->
 
@@ -12,6 +12,16 @@
         <mat-form-field class="password">
             <mat-label>Password</mat-label>
             <input matInput type="password" #password>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>User type</mat-label>
+            <select matNativeControl required #userType>
+            
+              <option value="Patient">Patient</option>
+              <option value="Admin">Admin</option>
+              <option value="Doctor">Doctor</option>
+            </select>
         </mat-form-field>
 
         <button mat-stroked-button class="login-button" (click)="login()">Login</button>

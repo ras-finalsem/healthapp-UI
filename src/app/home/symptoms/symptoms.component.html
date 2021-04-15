@@ -34,8 +34,11 @@
 
 
   <div class="map" id="map" class="match-parent"></div> -->
-
   <div class="main">
+    <button mat-icon-button (click)="logout()" style="position: fixed; top: 5px; right: 5px; background-color: transparent !important; color: black"
+      aria-label="Example icon button with a menu icon" class="tick_button">
+      <mat-icon>logout</mat-icon>
+    </button>
     <div class="content">
       <div class="header">
         <h2>Welcome {{username}}</h2>
