@@ -109,10 +109,10 @@ export class SymptomsComponent implements OnInit {
   }
 
   initializeMapBox(position) {
-    // const latitude = position.coords.latitude;
-    // const longitude = position.coords.longitude;
-    const latitude = 42.3086;
-    const longitude = -83.4821;
+    const latitude = position.coords.latitude;
+    const longitude = position.coords.longitude;
+    // const latitude = 42.3086;
+    // const longitude = -83.4821;
 
     const bbox = {
       latitude,

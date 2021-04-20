@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { GetAppointmentService } from '../home/services/getAppointments.service';
 
 @Component({
 	selector: 'app-admin',
@@ -7,10 +8,20 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 	styleUrls: ['./admin.component.scss']
 })
 
-export class AdminComponent {
+export class AdminComponent implements OnInit {
 
-	constructor(private _snackBar: MatSnackBar) {
+	appointments: any;
 
+	constructor(private _snackBar: MatSnackBar, private _getAppointmentService: GetAppointmentService) {
+
+	}
+
+	ngOnInit() {
+		this._getAppointmentService.getAppointments('admin').subscribe(data => {
+			this.appointments = Object.keys(data).map(key => {
+				return {...data[key], appointmentUUID: key}
+			}).filter(appointment => appointment.status === "pending");
+		});
 	}
 
 	selectedValue: string
@@ -136,12 +147,19 @@ export class AdminComponent {
 	}
 
 	confirm(data): void {
-		this.items = this.items.filter(item => data.name !== item.name);
-		this._snackBar.open(`${data.name}'s Appointment forwarded to ${this.selectedDept}.`, "OK", {
+        console.log("🚀 ~ file: admin.component.ts ~ line 150 ~ AdminComponent ~ confirm ~ data", data)
+
+		this._getAppointmentService.confirmAppointment({...data, status: "confirmed"}).subscribe(response => {
+			console.log("confirmAppointment response: ", response);
+		});
+
+		this.appointments = this.appointments.filter(item => data.username !== item.username);
+		this._snackBar.open(`${data.username}'s Appointment forwarded to ${this.selectedDept}.`, "OK", {
 			duration: 2000,
 			horizontalPosition: "center",
 			verticalPosition: "top",
 		});
+		
 	}
 
 	logout() {

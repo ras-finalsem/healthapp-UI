@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { GetAppointmentService } from '../home/services/getAppointments.service';
 
 @Component({
 	selector: 'app-doctor',
@@ -8,10 +9,20 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 
 
-export class DoctorComponent {
+export class DoctorComponent implements OnInit {
 
-	constructor(private _snackBar: MatSnackBar) {
+	appointments: any;
 
+	constructor(private _snackBar: MatSnackBar, private _getAppointmentService: GetAppointmentService) {
+
+	}
+
+	ngOnInit() {
+		this._getAppointmentService.getAppointments('admin').subscribe(data => {
+			this.appointments = Object.keys(data).map(key => {
+				return {...data[key], appointmentUUID: key}
+			}).filter(appointment => appointment.status === "confirmed");
+		});
 	}
 
 	selectedValue: string;
@@ -85,12 +96,15 @@ export class DoctorComponent {
 	}
 
 	confirm(data, type): void {
-		this._snackBar.open(`${data.name}'s Appointment ${type === 'done' ? 'confirmed' : 'rejected'}.`, "OK", {
+		this._snackBar.open(`${data.username}'s Appointment ${type === 'done' ? 'confirmed' : 'rejected'}.`, "OK", {
 			duration: 2000,
 			horizontalPosition: "center",
 			verticalPosition: "top",
 		});
-		this.items = this.items.filter(item => item.name !== data.name);
+		this.appointments = this.appointments.filter(item => item.username !== data.username);
+		this._getAppointmentService.confirmAppointment({...data, status: type === "done" ? "approved" : "declined"}).subscribe(response => {
+			console.log("confirmAppointment response: ", response);
+		});
 	}
 
 	logout() {

@@ -5,18 +5,19 @@
 	</button>
 	<div class="admin-heading">Welcome Doctor</div>
 	<div class="admin_content">
-		<mat-card class="example-card" *ngFor="let item of items; let i = index">
+		<mat-card class="example-card" *ngFor="let item of appointments; let i = index">
 			<mat-card-header>
 				<div mat-card-avatar>
 					<mat-icon aria-hidden="false" style="font-size: 2.5rem;" aria-label="Example home icon">person</mat-icon>
 				</div>
-				<mat-card-title>{{item.name}}</mat-card-title>
-				<mat-card-subtitle>{{item.gender}}</mat-card-subtitle>
+				<mat-card-title>{{item.username}}</mat-card-title>
 			</mat-card-header>
-
 			<mat-card-content>
 				<p>
-					{{item.symptom}}
+					{{item.selectedSymptoms}}
+				</p>
+				<p>
+					Hospital requested: {{item.name}}
 				</p>
 			</mat-card-content>
 			<mat-card-actions>
